@@ -42,7 +42,7 @@ public class Product {
     private Set<Item> items;
 
     private String brand;
-//    TODO: add description field
+    private String description;
 
     public Product() {
     }
@@ -136,6 +136,14 @@ public class Product {
 
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Set<Item> getItems() {
