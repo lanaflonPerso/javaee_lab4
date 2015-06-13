@@ -1,5 +1,5 @@
 .main_container {
-    margin-top: 60px;
+    margin-top: 70px;
 }
 .car_left {
     margin-right: 100px;
@@ -14,5 +14,8 @@
     margin-right: 20px;
 }
 .car_operation_messagebox {
+    margin-top: 20px;
+}
+footer {
     margin-top: 20px;
 }

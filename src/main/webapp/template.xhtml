@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <meta charset="UTF-8" />
+    <title>Easy Sale Tracking</title>
+    <meta name="author" content="Vadym Pechenoha" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Easy Sale Tracking</a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li><a href="/products.xhtml">Products</a></li>
+                <li><a href="/orders.xhtml">Orders</a></li>
+                <li><a href="/categories.xhtml">Categories</a></li>
+                <li><a href="/customers.xhtml">Customers</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<div class="container main_container">
+    <ui:insert name="content">
+        Hello World :)
+    </ui:insert>
+</div>
+<footer class="panel-footer navbar-fixed-bottom">
+    <div class="container">
+        Copyright &#169; 2015 <strong>Easy Sale Tracking</strong>
+    </div>
+</footer>
+</body>
+</html>
