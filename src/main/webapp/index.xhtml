@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
+        <h1 class="text-center">Welcome :)</h1>
+        <div class="txt">
+            Hi! Here's my lab <strong>work#4</strong> of JavaEE.<br>
+            You can easily get all cars available at the resource, or add new one.<br>
+            A bit later ability to add new products will be accessible only for <strong>admin</strong>.
+        </div>
+        <div class="buttons_mainpage text-center">
+            <a href="/product/list.xhtml" class="btn btn-info left_btn">List of all available products</a>
+            <a href="/product/add.xhtml" class="btn btn-success">Add new product</a>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>
