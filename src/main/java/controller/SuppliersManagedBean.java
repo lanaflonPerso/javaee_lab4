@@ -13,15 +13,10 @@ import javax.faces.model.ListDataModel;
 public class SuppliersManagedBean {
     private DataModel<Supplier> model;
     private Supplier supplier;
-    private int number;
 
     public SuppliersManagedBean() {
         model = new ListDataModel<Supplier>();
         model.setWrappedData(DAO.getAll(Supplier.class));
-/*        Supplier s = new Supplier("lalka", "ololo", "lol");
-        Supplier s2 = new Supplier("lalka2", "ololo", "lol");
-        model.setWrappedData(Arrays.asList(s, s2));*/
-
     }
 
     @PostConstruct
@@ -37,7 +32,4 @@ public class SuppliersManagedBean {
         return supplier;
     }
 
-    public int getNumber() {
-        return number;
-    }
 }

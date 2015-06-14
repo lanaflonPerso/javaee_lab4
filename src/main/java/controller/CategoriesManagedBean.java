@@ -22,7 +22,7 @@ public class CategoriesManagedBean {
         return model;
     }
 
-    public Category getCategories() {
+    public Category getCategory() {
         return category;
     }
 
