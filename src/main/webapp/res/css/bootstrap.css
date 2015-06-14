@@ -6594,6 +6594,7 @@ button.close {
 }
 .btn {
   border-width: 2px;
+  margin-right: 5px;
 }
 .btn:active {
   -webkit-box-shadow: none;

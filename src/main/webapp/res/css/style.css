@@ -1,11 +1,8 @@
 .main_container {
     margin-top: 70px;
 }
-.car_left {
-    margin-right: 100px;
-}
 .txt {
-    font-size: 20px;
+    font-size: 16px;
 }
 .buttons_mainpage {
     padding-top: 50px;
@@ -18,4 +15,11 @@
 }
 footer {
     margin-top: 20px;
+}
+table tr:first-child th {
+    background-color: #18bc9c;
+    color: #fff;
+}
+.crud_table tr th:last-child {
+    width: 150px;
 }
