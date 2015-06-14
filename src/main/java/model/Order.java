@@ -18,7 +18,7 @@ public class Order {
     @Enumerated(EnumType.ORDINAL)
     private DeliveryType deliveryType;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {})
+    @ManyToOne(cascade = {})
     @JoinColumn(name = "FK_customerID", nullable = false)
     private Customer customer;
 

@@ -17,11 +17,11 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {})
+    @ManyToOne(cascade = {})
     @JoinColumn(name = "FK_productID", nullable = false)
     private Product product;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {})
+    @ManyToOne(cascade = {})
     @JoinColumn(name = "FK_orderID", nullable = false)
     private Order order;
 

@@ -27,11 +27,11 @@ public class Product {
     @Column(columnDefinition = "DECIMAL(6,2)")
     private BigDecimal boughtPrice;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {})
+    @ManyToOne(cascade = {})
     @JoinColumn(name = "FK_categoryID", nullable = false)
     private Category category;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {})
+    @ManyToOne(cascade = {})
     @JoinColumn(name = "FK_supplierID", nullable = true)
     private Supplier supplier;
 
