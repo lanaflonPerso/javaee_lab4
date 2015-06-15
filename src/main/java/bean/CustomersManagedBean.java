@@ -1,4 +1,4 @@
-package controller;
+package bean;
 
 import model.Customer;
 
