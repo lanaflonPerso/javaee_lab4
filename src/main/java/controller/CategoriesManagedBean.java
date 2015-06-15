@@ -20,23 +20,30 @@ public class CategoriesManagedBean {
 
     public String preAdd() {
         category = new Category();
-        return "add";
+        return "category.add";
     }
 
     public String add() {
         DAO.add(category);
         model.setWrappedData(DAO.getAll(Category.class));
-        return "list";
+        return "category.list";
     }
 
     public String preEdit() {
         category = model.getRowData();
-        return "edit";
+        return "category.edit";
     }
 
     public String edit() {
         DAO.update(category);
-        return "list";
+        return "category.list";
+    }
+
+    public String remove() {
+        Category c = model.getRowData();
+        DAO.delete(c);
+        model.setWrappedData(DAO.getAll(Category.class));
+        return "category.list";
     }
 
     public DataModel<Category> getModel() {

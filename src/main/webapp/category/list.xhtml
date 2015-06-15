@@ -20,7 +20,7 @@
                     </h:column>
                     <h:column>
                         <h:commandLink value="Edit" action="#{categories.preEdit}" styleClass="btn btn-primary btn-xs" />
-                        <h:commandLink value="Remove" action="remove" onclick="return confirm('The category &#34;${item.name}&#34; will be deleted. Are you sure?');" styleClass="btn btn-danger btn-xs" />
+                        <h:commandLink value="Remove" action="#{categories.remove}" onclick="return confirm('The category &#34;${item.name}&#34; will be deleted. Are you sure?');" styleClass="btn btn-danger btn-xs" />
                     </h:column>
 
                 </h:dataTable>
