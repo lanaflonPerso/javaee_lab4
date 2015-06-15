@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import java.util.Date;
 
 @ManagedBean(name = "products")
 @SessionScoped
@@ -25,6 +26,7 @@ public class ProductsManagedBean {
 
     public String add() {
         product.setAvailableNumber(product.getCommonNumber());
+        product.setDate(new Date());
         DAO.add(product);
         model.setWrappedData(DAO.getAll(Product.class));
         return "product.list";
