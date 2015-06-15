@@ -20,7 +20,8 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">Delivery</f:facet>
-                        #{item.deliveryType}
+                        <h:outputText value="#{item.deliveryType}">
+                        </h:outputText>
                     </h:column>
                     <h:column>
                         <f:facet name="header">Address</f:facet>
@@ -28,19 +29,20 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">Date</f:facet>
-                        #{item.date}
+                        <h:outputText value="#{item.date}">
+                            <f:convertDateTime pattern="dd.MM.yyyy"/>
+                        </h:outputText>
                     </h:column>
                     <h:column>
                         <f:facet name="header">Status</f:facet>
                         #{item.status}
                     </h:column>
                     <h:column>
-                        <h:commandLink value="Edit" action="edit" styleClass="btn btn-primary btn-xs" />
-                        <h:commandLink value="Remove" action="remove" onclick="return confirm('The order will be deleted. Are you sure?');" styleClass="btn btn-danger btn-xs" />
+                        <h:commandLink value="Edit" action="#{orders.preEdit}" styleClass="btn btn-primary btn-xs" />
+                        <h:commandLink value="Remove" action="#{orders.remove}" onclick="return confirm('The order will be deleted. Are you sure?');" styleClass="btn btn-danger btn-xs" />
                     </h:column>
-
                 </h:dataTable>
-                <h:commandButton value="Add new order" action="#{products.setupAddCategory}" styleClass="btn btn-info" />
+                <h:commandButton value="Add new order" action="#{orders.preAdd}" styleClass="btn btn-info" />
             </h:form>
         </div>
     </ui:define>

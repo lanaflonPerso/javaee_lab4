@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
+        <h2 class="text-center">Add new order</h2>
+        <div class="txt">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Customer:" />
+                    <h:selectOneMenu label="Customer" value="#{orders.order.customer}" required="true">
+                        <f:selectItems value="#{customers.customers}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="Delivery:" />
+                    <h:selectOneMenu label="Delivery" value="#{orders.order.deliveryType}">
+                        <f:selectItem itemLabel="---" itemValue="" />
+                        <f:selectItems value="#{orders.deliveryTypes}" var="delivery"
+                                       itemValue="#{delivery}" itemLabel="#{delivery.toString()}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="Address:" />
+                    <h:inputText value="#{orders.order.address}"
+                                 label="Address" />
+
+                    <h:outputLabel value="Status:" />
+                    <h:selectOneMenu label="Status" value="#{orders.order.status}" required="true">
+                        <f:selectItem itemLabel="---" itemValue="" />
+                        <f:selectItems value="#{orders.orderStatuses}" var="status"
+                                       itemValue="#{status}" itemLabel="#{status.toString()}"/>
+                    </h:selectOneMenu>
+
+                </h:panelGrid>
+                <h:commandButton value="Add" action="#{orders.add}"/>
+                <h:commandButton immediate="true" value="Cancel" action="order.list"/>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>
