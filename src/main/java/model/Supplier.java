@@ -93,6 +93,6 @@ public class Supplier {
 
     @Override
     public String toString() {
-        return "Supplier#" + id;
+        return name;
     }
 }

@@ -188,6 +188,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Customer#" + id;
+        return name;
     }
 }
