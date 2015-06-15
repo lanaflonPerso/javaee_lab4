@@ -15,7 +15,7 @@ public class CategoryConverter implements Converter {
         if (value == null || value.length() == 0) {
             return null;
         }
-        return DAO.getById(Integer.valueOf(value), Category.class);
+        return DAO.getById(Integer.parseInt(value), Category.class);
     }
 
     public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
