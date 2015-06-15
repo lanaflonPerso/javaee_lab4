@@ -18,6 +18,27 @@ public class CategoriesManagedBean {
         model.setWrappedData(DAO.getAll(Category.class));
     }
 
+    public String preAdd() {
+        category = new Category();
+        return "add";
+    }
+
+    public String add() {
+        DAO.add(category);
+        model.setWrappedData(DAO.getAll(Category.class));
+        return "list";
+    }
+
+    public String preEdit() {
+        category = model.getRowData();
+        return "edit";
+    }
+
+    public String edit() {
+        DAO.update(category);
+        return "list";
+    }
+
     public DataModel<Category> getModel() {
         return model;
     }

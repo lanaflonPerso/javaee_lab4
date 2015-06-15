@@ -19,12 +19,12 @@
                         #{item.description}
                     </h:column>
                     <h:column>
-                        <h:commandLink value="Edit" action="edit" styleClass="btn btn-primary btn-xs" />
+                        <h:commandLink value="Edit" action="#{categories.preEdit}" styleClass="btn btn-primary btn-xs" />
                         <h:commandLink value="Remove" action="remove" onclick="return confirm('The category &#34;${item.name}&#34; will be deleted. Are you sure?');" styleClass="btn btn-danger btn-xs" />
                     </h:column>
 
                 </h:dataTable>
-                <h:commandButton value="Add new category" action="#{products.setupAddCategory}" styleClass="btn btn-info" />
+                <h:commandButton value="Add new category" action="#{categories.preAdd}" styleClass="btn btn-info" />
             </h:form>
         </div>
     </ui:define>
