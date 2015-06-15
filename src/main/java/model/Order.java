@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name="order")
+@Table(name="orderV")
 @NamedQueries({
         @NamedQuery(name = "Order.findById", query = "SELECT d FROM Order d WHERE d.id = :id"),
         @NamedQuery(name = "Order.findAll", query = "SELECT d FROM Order d")
@@ -29,6 +29,7 @@ public class Order {
     private OrderStatus status;
 
     @Temporal(TemporalType.DATE)
+    @Column(name = "dateV")
     private Date date;
 
 //    TODO: add one more column - resource: website, where the order has been made
