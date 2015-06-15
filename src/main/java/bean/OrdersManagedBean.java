@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import java.util.Date;
 
 @ManagedBean(name = "orders")
 @SessionScoped
@@ -26,6 +27,7 @@ public class OrdersManagedBean {
     }
 
     public String add() {
+        order.setDate(new Date());
         DAO.add(order);
         model.setWrappedData(DAO.getAll(Order.class));
         return "order.list";
