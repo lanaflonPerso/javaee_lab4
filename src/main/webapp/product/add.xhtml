@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
+        <h2 class="text-center">Add new product</h2>
+        <div class="txt">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Category:" />
+                    <h:selectOneMenu label="Category" value="#{products.product.category}" required="true">
+                        <f:selectItems value="#{categories.categories}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="Code:" />
+                    <h:inputText value="#{products.product.code}"
+                                 label="Code" required="true" />
+
+                    <h:outputLabel value="Name:" />
+                    <h:inputText value="#{products.product.name}"
+                                 label="Name" required="true" />
+
+                    <h:outputLabel value="Brand:" />
+                    <h:inputText value="#{products.product.brand}"
+                                 label="Brand" />
+
+                    <h:outputLabel value="Bought Number:" />
+                    <h:inputText value="#{products.product.commonNumber}"
+                                 label="Bought Number" required="true" />
+
+                    <h:outputLabel value="Bought Price:" />
+                    <h:inputText value="#{products.product.boughtPrice}"
+                                 label="Bought Price" required="true" />
+
+                    <h:outputLabel value="Supplier:" />
+                    <h:selectOneMenu label="Supplier" value="#{products.product.supplier}">
+                        <f:selectItems value="#{suppliers.suppliers}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="Description:" />
+                    <h:inputTextarea value="#{products.product.description}"
+                                 label="Description" title="Description" />
+                </h:panelGrid>
+                <h:commandButton value="Add" action="#{products.add}"/>
+                <h:commandButton immediate="true" value="Cancel" action="product.list"/>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

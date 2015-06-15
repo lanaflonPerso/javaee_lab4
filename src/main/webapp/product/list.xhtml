@@ -43,12 +43,12 @@
                         #{item.supplier.name}
                     </h:column>
                     <h:column>
-                        <h:commandLink value="Edit" action="edit" styleClass="btn btn-primary btn-xs" />
-                        <h:commandLink value="Remove" action="remove" onclick="return confirm('The product &#34;${item.name}&#34; will be deleted. Are you sure?');" styleClass="btn btn-danger btn-xs" />
+                        <h:commandLink value="Edit" action="#{products.preEdit}" styleClass="btn btn-primary btn-xs" />
+                        <h:commandLink value="Remove" action="#{products.remove}" onclick='return confirm("The product will be deleted. Are you sure?");' styleClass="btn btn-danger btn-xs" />
                     </h:column>
 
                 </h:dataTable>
-                <h:commandButton value="Add new product" action="#{products.setupAddProduct}" styleClass="btn btn-info" />
+                <h:commandButton value="Add new product" action="#{products.preAdd}" styleClass="btn btn-info" />
             </h:form>
         </div>
     </ui:define>
