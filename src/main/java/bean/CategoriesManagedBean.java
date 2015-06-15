@@ -1,11 +1,13 @@
 package bean;
 
 import model.Category;
+import other.JsfUtil;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "categories")
 @SessionScoped
@@ -44,6 +46,10 @@ public class CategoriesManagedBean {
         DAO.delete(c);
         model.setWrappedData(DAO.getAll(Category.class));
         return "category.list";
+    }
+
+    public SelectItem[] getCategories() {
+        return JsfUtil.getSelectItems(DAO.getAll(Category.class), true);
     }
 
     public DataModel<Category> getModel() {

@@ -1,11 +1,13 @@
 package bean;
 
 import model.Customer;
+import other.JsfUtil;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "customers")
 @SessionScoped
@@ -44,6 +46,10 @@ public class CustomersManagedBean {
         DAO.delete(c);
         model.setWrappedData(DAO.getAll(Customer.class));
         return "customer.list";
+    }
+
+    public SelectItem[] getCustomers() {
+        return JsfUtil.getSelectItems(DAO.getAll(Customer.class), true);
     }
 
     public DataModel<Customer> getModel() {
