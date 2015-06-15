@@ -6,21 +6,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/template.xhtml">
     <ui:define name="content">
-        <h2 class="text-center">Edit category</h2>
+        <h2 class="text-center">Edit customer</h2>
         <div class="txt">
-
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Name:" />
-                    <h:inputText value="#{categories.category.name}"
+                    <h:inputText value="#{customers.customer.name}"
                                  label="Name" title="Name" required="true" />
-
-                    <h:outputLabel value="Description:" />
-                    <h:inputTextarea value="#{categories.category.description}"
-                                 label="Description" title="Description" />
                 </h:panelGrid>
-                <h:commandButton value="Save" action="#{categories.edit}"/>
-                <h:commandButton immediate="true" value="Cancel" action="category.list"/>
+                <h:commandButton value="Save" action="#{customers.edit}"/>
+                <h:commandButton immediate="true" value="Cancel" action="customer.list"/>
             </h:form>
         </div>
     </ui:define>

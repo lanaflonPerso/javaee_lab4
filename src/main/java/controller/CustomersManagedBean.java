@@ -18,6 +18,34 @@ public class CustomersManagedBean {
         model.setWrappedData(DAO.getAll(Customer.class));
     }
 
+    public String preAdd() {
+        customer = new Customer();
+        return "customer.add";
+    }
+
+    public String add() {
+        DAO.add(customer);
+        model.setWrappedData(DAO.getAll(Customer.class));
+        return "customer.list";
+    }
+
+    public String preEdit() {
+        customer = model.getRowData();
+        return "customer.edit";
+    }
+
+    public String edit() {
+        DAO.update(customer);
+        return "customer.list";
+    }
+
+    public String remove() {
+        Customer c = model.getRowData();
+        DAO.delete(c);
+        model.setWrappedData(DAO.getAll(Customer.class));
+        return "customer.list";
+    }
+
     public DataModel<Customer> getModel() {
         return model;
     }
