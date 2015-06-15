@@ -4,13 +4,6 @@
               xmlns="http://java.sun.com/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
-    <!--<navigation-rule>-->
-        <!--<navigation-case>
-            <from-outcome>*</from-outcome>
-            <to-view-id>/category/list.xhtml</to-view-id>
-            <redirect />
-        </navigation-case>-->
-    <!--</navigation-rule>-->
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
@@ -62,6 +55,42 @@
         <navigation-case>
             <from-outcome>supplier.edit</from-outcome>
             <to-view-id>/supplier/edit.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>product.list</from-outcome>
+            <to-view-id>/product/list.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>product.add</from-outcome>
+            <to-view-id>/product/add.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>product.edit</from-outcome>
+            <to-view-id>/product/edit.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>order.list</from-outcome>
+            <to-view-id>/order/list.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>order.add</from-outcome>
+            <to-view-id>/order/add.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>order.edit</from-outcome>
+            <to-view-id>/order/edit.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>
