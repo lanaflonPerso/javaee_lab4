@@ -2,7 +2,6 @@ package controller;
 
 import model.Supplier;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -19,9 +18,32 @@ public class SuppliersManagedBean {
         model.setWrappedData(DAO.getAll(Supplier.class));
     }
 
-    @PostConstruct
-    private void init(){
-//        number = DAO.getAll(Supplier.class).size();
+    public String preAdd() {
+        supplier = new Supplier();
+        return "supplier.add";
+    }
+
+    public String add() {
+        DAO.add(supplier);
+        model.setWrappedData(DAO.getAll(Supplier.class));
+        return "supplier.list";
+    }
+
+    public String preEdit() {
+        supplier = model.getRowData();
+        return "supplier.edit";
+    }
+
+    public String edit() {
+        DAO.update(supplier);
+        return "supplier.list";
+    }
+
+    public String remove() {
+        Supplier c = model.getRowData();
+        DAO.delete(c);
+        model.setWrappedData(DAO.getAll(Supplier.class));
+        return "supplier.list";
     }
 
     public DataModel<Supplier> getModel() {
