@@ -18,6 +18,35 @@ public class ProductsManagedBean {
         model.setWrappedData(DAO.getAll(Product.class));
     }
 
+    public String preAdd() {
+        product = new Product();
+        return "product.add";
+    }
+
+    public String add() {
+        product.setAvailableNumber(product.getCommonNumber());
+        DAO.add(product);
+        model.setWrappedData(DAO.getAll(Product.class));
+        return "product.list";
+    }
+
+    public String preEdit() {
+        product = model.getRowData();
+        return "product.edit";
+    }
+
+    public String edit() {
+        DAO.update(product);
+        return "product.list";
+    }
+
+    public String remove() {
+        Product c = model.getRowData();
+        DAO.delete(c);
+        model.setWrappedData(DAO.getAll(Product.class));
+        return "product.list";
+    }
+
     public DataModel<Product> getModel() {
         return model;
     }
