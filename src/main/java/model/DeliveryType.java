@@ -6,7 +6,18 @@ package model;
  * ! If there's new company available, it should be added to the end
  */
 public enum DeliveryType {
-    UKRPOSHTA,
-    NOVA_POSHTA,
-    AUTOLUX
+    UKRPOSHTA("UkrPoshta"),
+    NOVA_POSHTA("Nova Poshta"),
+    AUTOLUX("Autolux");
+
+    private String name;
+
+    DeliveryType(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
