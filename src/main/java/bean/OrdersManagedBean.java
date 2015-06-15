@@ -1,6 +1,8 @@
 package bean;
 
+import model.DeliveryType;
 import model.Order;
+import model.OrderStatus;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -46,11 +48,19 @@ public class OrdersManagedBean {
         return "order.list";
     }
 
+    public DeliveryType[] getDeliveryTypes() {
+        return DeliveryType.values();
+    }
+
+    public OrderStatus[] getOrderStatuses() {
+        return OrderStatus.values();
+    }
+
     public DataModel<Order> getModel() {
         return model;
     }
 
-    public Order getCustomer() {
+    public Order getOrder() {
         return order;
     }
 
