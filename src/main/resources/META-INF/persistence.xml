@@ -5,7 +5,7 @@
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="easySaleTracking" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="easySaleTracking" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>model.Category</class>
         <class>model.Customer</class>
