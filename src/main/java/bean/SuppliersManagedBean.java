@@ -10,11 +10,12 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import java.io.Serializable;
 
 @ManagedBean(name = "suppliers")
 @SessionScoped
 @Stateless
-public class SuppliersManagedBean {
+public class SuppliersManagedBean implements Serializable {
 
     @EJB
     private DAO dao;

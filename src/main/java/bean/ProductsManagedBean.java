@@ -8,12 +8,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import java.io.Serializable;
 import java.util.Date;
 
 @ManagedBean(name = "products")
 @SessionScoped
 @Stateless
-public class ProductsManagedBean {
+public class ProductsManagedBean implements Serializable {
 
     @EJB
     private DAO dao;

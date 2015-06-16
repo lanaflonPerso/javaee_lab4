@@ -10,12 +10,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import java.io.Serializable;
 import java.util.Date;
 
 @ManagedBean(name = "orders")
 @SessionScoped
 @Stateless
-public class OrdersManagedBean {
+public class OrdersManagedBean implements Serializable {
 
     @EJB
     private DAO dao;

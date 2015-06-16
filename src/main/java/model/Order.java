@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import java.util.Set;
         @NamedQuery(name = "Order.findById", query = "SELECT d FROM Order d WHERE d.id = :id"),
         @NamedQuery(name = "Order.findAll", query = "SELECT d FROM Order d")
 })
-public class Order {
+public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

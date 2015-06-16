@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
@@ -14,7 +15,7 @@ import java.util.Set;
         @NamedQuery(name = "Product.findById", query = "SELECT d FROM Product d WHERE d.id = :id"),
         @NamedQuery(name = "Product.findAll", query = "SELECT d FROM Product d")
 })
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
