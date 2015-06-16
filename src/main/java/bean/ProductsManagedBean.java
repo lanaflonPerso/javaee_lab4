@@ -2,6 +2,8 @@ package bean;
 
 import model.Product;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -10,13 +12,18 @@ import java.util.Date;
 
 @ManagedBean(name = "products")
 @SessionScoped
+@Stateless
 public class ProductsManagedBean {
+
+    @EJB
+    private DAO dao;
+
     private DataModel<Product> model;
     private Product product;
 
     public ProductsManagedBean() {
         model = new ListDataModel<Product>();
-        model.setWrappedData(DAO.getAll(Product.class));
+        model.setWrappedData(dao.getAll(Product.class));
     }
 
     public String preAdd() {
@@ -27,8 +34,8 @@ public class ProductsManagedBean {
     public String add() {
         product.setAvailableNumber(product.getCommonNumber());
         product.setDate(new Date());
-        DAO.add(product);
-        model.setWrappedData(DAO.getAll(Product.class));
+        dao.add(product);
+        model.setWrappedData(dao.getAll(Product.class));
         return "product.list";
     }
 
@@ -38,14 +45,14 @@ public class ProductsManagedBean {
     }
 
     public String edit() {
-        DAO.update(product);
+        dao.update(product);
         return "product.list";
     }
 
     public String remove() {
         Product c = model.getRowData();
-        DAO.delete(c);
-        model.setWrappedData(DAO.getAll(Product.class));
+        dao.delete(c);
+        model.setWrappedData(dao.getAll(Product.class));
         return "product.list";
     }
 

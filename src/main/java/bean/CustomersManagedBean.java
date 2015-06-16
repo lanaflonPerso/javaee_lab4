@@ -3,6 +3,8 @@ package bean;
 import model.Customer;
 import other.JsfUtil;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -11,13 +13,18 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "customers")
 @SessionScoped
+@Stateless
 public class CustomersManagedBean {
+
+    @EJB
+    private DAO dao;
+
     private DataModel<Customer> model;
     private Customer customer;
 
     public CustomersManagedBean() {
         model = new ListDataModel<Customer>();
-        model.setWrappedData(DAO.getAll(Customer.class));
+        model.setWrappedData(dao.getAll(Customer.class));
     }
 
     public String preAdd() {
@@ -26,8 +33,8 @@ public class CustomersManagedBean {
     }
 
     public String add() {
-        DAO.add(customer);
-        model.setWrappedData(DAO.getAll(Customer.class));
+        dao.add(customer);
+        model.setWrappedData(dao.getAll(Customer.class));
         return "customer.list";
     }
 
@@ -37,19 +44,19 @@ public class CustomersManagedBean {
     }
 
     public String edit() {
-        DAO.update(customer);
+        dao.update(customer);
         return "customer.list";
     }
 
     public String remove() {
         Customer c = model.getRowData();
-        DAO.delete(c);
-        model.setWrappedData(DAO.getAll(Customer.class));
+        dao.delete(c);
+        model.setWrappedData(dao.getAll(Customer.class));
         return "customer.list";
     }
 
     public SelectItem[] getCustomers() {
-        return JsfUtil.getSelectItems(DAO.getAll(Customer.class), true);
+        return JsfUtil.getSelectItems(dao.getAll(Customer.class), true);
     }
 
     public DataModel<Customer> getModel() {

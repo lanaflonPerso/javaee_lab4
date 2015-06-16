@@ -3,6 +3,8 @@ package bean;
 import model.Supplier;
 import other.JsfUtil;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -11,13 +13,18 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "suppliers")
 @SessionScoped
+@Stateless
 public class SuppliersManagedBean {
+
+    @EJB
+    private DAO dao;
+
     private DataModel<Supplier> model;
     private Supplier supplier;
 
     public SuppliersManagedBean() {
         model = new ListDataModel<Supplier>();
-        model.setWrappedData(DAO.getAll(Supplier.class));
+        model.setWrappedData(dao.getAll(Supplier.class));
     }
 
     public String preAdd() {
@@ -26,8 +33,8 @@ public class SuppliersManagedBean {
     }
 
     public String add() {
-        DAO.add(supplier);
-        model.setWrappedData(DAO.getAll(Supplier.class));
+        dao.add(supplier);
+        model.setWrappedData(dao.getAll(Supplier.class));
         return "supplier.list";
     }
 
@@ -37,19 +44,19 @@ public class SuppliersManagedBean {
     }
 
     public String edit() {
-        DAO.update(supplier);
+        dao.update(supplier);
         return "supplier.list";
     }
 
     public String remove() {
         Supplier c = model.getRowData();
-        DAO.delete(c);
-        model.setWrappedData(DAO.getAll(Supplier.class));
+        dao.delete(c);
+        model.setWrappedData(dao.getAll(Supplier.class));
         return "supplier.list";
     }
 
     public SelectItem[] getSuppliers() {
-        return JsfUtil.getSelectItems(DAO.getAll(Supplier.class), true);
+        return JsfUtil.getSelectItems(dao.getAll(Supplier.class), true);
     }
 
     public DataModel<Supplier> getModel() {

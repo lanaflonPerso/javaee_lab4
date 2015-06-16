@@ -4,6 +4,8 @@ import model.DeliveryType;
 import model.Order;
 import model.OrderStatus;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -12,13 +14,18 @@ import java.util.Date;
 
 @ManagedBean(name = "orders")
 @SessionScoped
+@Stateless
 public class OrdersManagedBean {
+
+    @EJB
+    private DAO dao;
+    
     private DataModel<Order> model;
     private Order order;
 
     public OrdersManagedBean() {
         model = new ListDataModel<Order>();
-        model.setWrappedData(DAO.getAll(Order.class));
+        model.setWrappedData(dao.getAll(Order.class));
     }
 
     public String preAdd() {
@@ -28,8 +35,8 @@ public class OrdersManagedBean {
 
     public String add() {
         order.setDate(new Date());
-        DAO.add(order);
-        model.setWrappedData(DAO.getAll(Order.class));
+        dao.add(order);
+        model.setWrappedData(dao.getAll(Order.class));
         return "order.list";
     }
 
@@ -39,14 +46,14 @@ public class OrdersManagedBean {
     }
 
     public String edit() {
-        DAO.update(order);
+        dao.update(order);
         return "order.list";
     }
 
     public String remove() {
         Order c = model.getRowData();
-        DAO.delete(c);
-        model.setWrappedData(DAO.getAll(Order.class));
+        dao.delete(c);
+        model.setWrappedData(dao.getAll(Order.class));
         return "order.list";
     }
 

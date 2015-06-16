@@ -3,6 +3,8 @@ package bean;
 import model.Category;
 import other.JsfUtil;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -11,13 +13,18 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "categories")
 @SessionScoped
+@Stateless
 public class CategoriesManagedBean {
+
+    @EJB
+    private DAO dao;
+
     private DataModel<Category> model;
     private Category category;
 
     public CategoriesManagedBean() {
         model = new ListDataModel<Category>();
-        model.setWrappedData(DAO.getAll(Category.class));
+        model.setWrappedData(dao.getAll(Category.class));
     }
 
     public String preAdd() {
@@ -26,8 +33,8 @@ public class CategoriesManagedBean {
     }
 
     public String add() {
-        DAO.add(category);
-        model.setWrappedData(DAO.getAll(Category.class));
+        dao.add(category);
+        model.setWrappedData(dao.getAll(Category.class));
         return "category.list";
     }
 
@@ -37,19 +44,19 @@ public class CategoriesManagedBean {
     }
 
     public String edit() {
-        DAO.update(category);
+        dao.update(category);
         return "category.list";
     }
 
     public String remove() {
         Category c = model.getRowData();
-        DAO.delete(c);
-        model.setWrappedData(DAO.getAll(Category.class));
+        dao.delete(c);
+        model.setWrappedData(dao.getAll(Category.class));
         return "category.list";
     }
 
     public SelectItem[] getCategories() {
-        return JsfUtil.getSelectItems(DAO.getAll(Category.class), true);
+        return JsfUtil.getSelectItems(dao.getAll(Category.class), true);
     }
 
     public DataModel<Category> getModel() {
