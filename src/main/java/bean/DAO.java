@@ -1,64 +1,59 @@
 package bean;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
  * Service that provides CRUD-operations for Product Entity
+ * So many comments, because there are the changes for use EJB were made
  */
+@Stateless
 public class DAO {
 
-    private static EntityManagerFactory emf;
+    /*private static EntityManagerFactory emf;
 
     static {
         emf = Persistence.createEntityManagerFactory("easySaleTracking");
+    }*/
+
+    @PersistenceContext(unitName = "easySaleTracking")
+    private EntityManager em;
+
+    public DAO() {
     }
 
-    public static <T> void add(T t){
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
+    public <T> void add(T t){
+//        em.getTransaction().begin();
         em.persist(t);
-        em.getTransaction().commit();
-        em.close();
+//        em.getTransaction().commit();
     }
 
-    public static <T> void update(T t) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
+    public <T> void update(T t) {
+//        em.getTransaction().begin();
         em.merge(t);
-        em.getTransaction().commit();
-        em.close();
+//        em.getTransaction().commit();
+//        em.close();
     }
 
-    public static <T> void delete(T t) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
+    public <T> void delete(T t) {
+//        em.getTransaction().begin();
         em.remove(em.merge(t));
-        em.getTransaction().commit();
-        em.close();
+//        em.getTransaction().commit();
+//        em.close();
     }
 
-    public static <T> T getById(int id, Class<T> type) {
-        EntityManager em = emf.createEntityManager();
+    public <T> T getById(int id, Class<T> type) {
         T entity = (T) em.createNamedQuery(type.getSimpleName() + ".findById").setParameter("id", id).getSingleResult();
-        em.close();
+//        em.close();
         return entity;
     }
 
-    public static <T> List<T> getAll(Class<T> type) {
-        if (emf == null) {
-            emf = Persistence.createEntityManagerFactory("easySaleTracking");
-        }
-        EntityManager em = emf.createEntityManager();
+    public <T> List<T> getAll(Class<T> type) {
         List<T> entities = em.createNamedQuery(type.getSimpleName() + ".findAll").getResultList();
-        em.close();
+//        em.close();
         return entities;
-    }
-
-    public static void close() {
-        emf.close();
     }
 
 }
