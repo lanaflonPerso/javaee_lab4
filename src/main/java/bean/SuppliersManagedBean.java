@@ -6,8 +6,6 @@ import other.JsfUtil;
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -17,17 +15,16 @@ import java.io.Serializable;
 
 @ManagedBean(name = "suppliers")
 @SessionScoped
-@Stateless
 @DeclareRoles({"manager","statist"})
 public class SuppliersManagedBean implements Serializable {
-    @EJB
+
     private DAO dao;
 
     private DataModel<Supplier> model;
     private Supplier supplier;
 
     public SuppliersManagedBean() {
-//        dao = new DAO();
+        dao = new DAO();
         model = new ListDataModel<Supplier>();
         model.setWrappedData(dao.getAll(Supplier.class));
     }
