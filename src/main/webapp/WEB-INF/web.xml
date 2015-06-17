@@ -21,12 +21,31 @@
 
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Main</web-resource-name>
+            <web-resource-name>Category</web-resource-name>
             <description/>
-            <url-pattern>/*</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
+            <url-pattern>/category/*</url-pattern>
         </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Customer</web-resource-name>
+            <description/>
+            <url-pattern>/customer/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Order</web-resource-name>
+            <description/>
+            <url-pattern>/order/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Product</web-resource-name>
+            <description/>
+            <url-pattern>/product/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Supplier</web-resource-name>
+            <description/>
+            <url-pattern>/supplier/*</url-pattern>
+        </web-resource-collection>
+
         <auth-constraint>
             <description/>
             <role-name>manager</role-name>
