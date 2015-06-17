@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-  <display-name>Lab 4</display-name>
+
+    <display-name>Course Work</display-name>
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
@@ -17,4 +18,97 @@
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Main</web-resource-name>
+            <description/>
+            <url-pattern>/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>manager</role-name>
+            <role-name>statist</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>AddCategory</web-resource-name>
+            <description/>
+            <url-pattern>/category/add.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>AddCustomer</web-resource-name>
+            <description/>
+            <url-pattern>/customer/add.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>AddOrder</web-resource-name>
+            <description/>
+            <url-pattern>/order/add.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>AddProduct</web-resource-name>
+            <description/>
+            <url-pattern>/product/add.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>AddSupplier</web-resource-name>
+            <description/>
+            <url-pattern>/supplier/add.xhtml</url-pattern>
+        </web-resource-collection>
+
+        <web-resource-collection>
+            <web-resource-name>EditCategory</web-resource-name>
+            <description/>
+            <url-pattern>/category/edit.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>EditCustomer</web-resource-name>
+            <description/>
+            <url-pattern>/customer/edit.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>EditOrder</web-resource-name>
+            <description/>
+            <url-pattern>/order/edit.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>EditProduct</web-resource-name>
+            <description/>
+            <url-pattern>/product/edit.xhtml</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>EditSupplier</web-resource-name>
+            <description/>
+            <url-pattern>/supplier/edit.xhtml</url-pattern>
+        </web-resource-collection>
+
+        <auth-constraint>
+            <description/>
+            <role-name>manager</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-role>
+        <description/>
+        <role-name>manager</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>statist</role-name>
+    </security-role>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <form-error-page>/wrong_login.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+
 </web-app>
