@@ -28,7 +28,6 @@
 
                     <h:outputLabel value="Status:" />
                     <h:selectOneMenu label="Status" value="#{orders.order.status}" required="true">
-                        <f:selectItem itemLabel="---" itemValue="" />
                         <f:selectItems value="#{orders.orderStatuses}" var="status"
                                        itemValue="#{status}" itemLabel="#{status.toString()}"/>
                     </h:selectOneMenu>
