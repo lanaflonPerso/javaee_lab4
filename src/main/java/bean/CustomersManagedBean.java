@@ -3,8 +3,6 @@ package bean;
 import model.Customer;
 import other.JsfUtil;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -14,16 +12,15 @@ import java.io.Serializable;
 
 @ManagedBean(name = "customers")
 @SessionScoped
-@Stateless
 public class CustomersManagedBean implements Serializable {
 
-    @EJB
     private DAO dao;
 
     private DataModel<Customer> model;
     private Customer customer;
 
     public CustomersManagedBean() {
+        dao = new DAO();
         model = new ListDataModel<Customer>();
         model.setWrappedData(dao.getAll(Customer.class));
     }

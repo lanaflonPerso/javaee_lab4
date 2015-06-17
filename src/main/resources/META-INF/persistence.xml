@@ -5,14 +5,20 @@
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="easySaleTracking" transaction-type="JTA">
-        <jta-data-source>easySaleTracking</jta-data-source>
+    <persistence-unit name="easySaleTracking" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>model.Category</class>
         <class>model.Customer</class>
         <class>model.Item</class>
         <class>model.Order</class>
         <class>model.Product</class>
         <class>model.Supplier</class>
-        <properties/>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/easy_sell_tracking"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="11111111"/>
+        </properties>
     </persistence-unit>
 </persistence>

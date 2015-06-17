@@ -3,7 +3,6 @@ package converter;
 import bean.DAO;
 import model.Supplier;
 
-import javax.ejb.EJB;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -12,8 +11,7 @@ import javax.faces.convert.FacesConverter;
 @FacesConverter(forClass=Supplier.class)
 public class SupplierConverter implements Converter {
 
-    @EJB
-    private DAO dao;
+    private DAO dao = new DAO();
 
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
         if (value == null || value.length() == 0) {

@@ -2,8 +2,6 @@ package bean;
 
 import model.Product;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -13,16 +11,15 @@ import java.util.Date;
 
 @ManagedBean(name = "products")
 @SessionScoped
-@Stateless
 public class ProductsManagedBean implements Serializable {
 
-    @EJB
     private DAO dao;
 
     private DataModel<Product> model;
     private Product product;
 
     public ProductsManagedBean() {
+        dao = new DAO();
         model = new ListDataModel<Product>();
         model.setWrappedData(dao.getAll(Product.class));
     }
