@@ -7,6 +7,20 @@
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>auth.login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
             <from-outcome>category.list</from-outcome>
             <to-view-id>/category/list.xhtml</to-view-id>
             <redirect />
@@ -22,6 +36,7 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
+
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
@@ -40,6 +55,7 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
+
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
@@ -58,6 +74,7 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
+
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
@@ -76,6 +93,7 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
+
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
@@ -94,6 +112,7 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
+
     <converter>
         <converter-for-class>java.lang.Enum</converter-for-class>
         <converter-class>javax.faces.convert.EnumConverter</converter-class>

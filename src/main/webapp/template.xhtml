@@ -26,10 +26,15 @@
                 <li><a href="/lab4/supplier/list.xhtml">Suppliers</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Help</a></li>
+                <li>
+                    <ui:fragment rendered="#{request.remoteUser == null}">
+                        <h:outputLink value="/lab4/login.xhtml">Log in</h:outputLink>
+                    </ui:fragment>
+                    <h:form rendered="#{request.remoteUser != null}" styleClass="logout">
+                        <h:commandLink value="Log out" action="#{auth.logout()}" />
+                    </h:form>
+                </li>
             </ul>
-
         </div>
     </div>
 </div>
