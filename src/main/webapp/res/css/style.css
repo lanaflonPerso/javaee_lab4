@@ -23,3 +23,6 @@ table tr:first-child th {
 .crud_table tr th:last-child {
     width: 125px;
 }
+.logout {
+    margin-top: 18px;
+}
